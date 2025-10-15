@@ -123,3 +123,81 @@ for (let i = 0; i < 150; i++) {  // Number of stars
 
   starContainer.appendChild(star);
 }
+
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particlesArray = [];
+const numParticles = 120;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.baseSize = Math.random() * 2 + 1;
+    this.size = this.baseSize;
+    this.twinkleSpeed = Math.random() * 0.05 + 0.01; // twinkle speed
+    this.angle = Math.random() * Math.PI * 2;
+    this.speedX = Math.random() * 0.5 - 0.25;
+    this.speedY = Math.random() * 0.5 - 0.25;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.angle += this.twinkleSpeed;
+
+    // Twinkle (sin wave size change)
+    this.size = this.baseSize + Math.sin(this.angle) * 0.5;
+
+    // Wrap around edges
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+  }
+
+  draw() {
+    ctx.beginPath();
+    const alpha = 0.5 + Math.sin(this.angle) * 0.3; // brightness flicker
+    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+    ctx.shadowBlur = 8; // glow amount
+    ctx.shadowColor = "white";
+    ctx.arc(this.x, this.y, Math.max(this.size, 0), 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0; // reset for next frame
+  }
+}
+
+function initParticles() {
+  particlesArray = [];
+  for (let i = 0; i < numParticles; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function animateParticles() {
+  // Completely clear with full transparency each frame
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save(); // Save default settings
+
+  for (let particle of particlesArray) {
+    particle.update();
+    particle.draw();
+  }
+
+  ctx.restore(); // Reset to default to avoid ghost shadows
+  requestAnimationFrame(animateParticles);
+}
+
+
+initParticles();
+animateParticles();
