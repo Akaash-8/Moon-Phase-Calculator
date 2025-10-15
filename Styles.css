@@ -1,0 +1,110 @@
+h1{
+    text-align: center;
+    margin-top: 2%;
+    font-style: oblique;
+    
+}
+
+h4{
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+}
+
+body {
+  /* background-image: url("images/space-bg.jpg");
+  background-size: cover;        
+  background-attachment: fixed;  */
+
+   background: linear-gradient(-45deg, #0f2027, #203a43, #0d1417, #000000,#422844);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  text-align: center;
+   font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+input, button {
+  padding: 8px;
+  font-size: 16px;
+  margin: 5px;
+  font-family: "Dancing Script", cursive;
+  border-radius: 8px;
+  
+  
+}
+
+.date{
+    text-align: center;
+    margin-top: 4%;
+    font-family: "Dancing Script", cursive;
+    font-weight: bold;
+}
+
+
+
+
+/* .Time{
+    text-align: center;
+    margin-top: 2%;
+    font-family: "Dancing Script", cursive;
+} */
+
+.SubmitButton{
+    align-items: center;
+    margin-top: 2%;
+    font-family: "Dancing Script", cursive;
+    
+    border-radius: 20px;
+    text-decoration: white;
+}
+
+canvas {
+  background: black;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.moon-phase {
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+.fun-fact{
+  margin-top: 20px;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}

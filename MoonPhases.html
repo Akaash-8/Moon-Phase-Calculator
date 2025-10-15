@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <title>Moon Phase Calculator</title>
+</head>
+<body>
+
+    <h1>Moon Phase Calculator 🌕</h1>
+    <h4>Find out the Moon's phase for any date and time!</h4>
+    
+    <div class="date">
+        <label for="event-date">Select a Date:</label>
+        <input type="date" id="event-date" name="event-date">
+    </div>
+
+    <!-- <div class="time">
+        <label for="Time">Enter Time:</label>
+        <input type="time" id="Time" name="Time">
+    </div> -->
+    
+<div class="stars"></div>
+    <div class="fun-fact" id="funFact"></div>
+
+    <button id="Submit" class="SubmitButton" onclick="calculateMoonPhase()">Show Moon Phase...</button>
+
+    <div class="moon-phase" id="moonPhase"></div>
+    <canvas id="moonCanvas" width="200" height="200"></canvas>
+
+    <script src="JavaScript.js"></script>
+</body>
+</html>
